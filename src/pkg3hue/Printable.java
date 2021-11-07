@@ -1,7 +1,8 @@
 package pkg3hue;
 
+import java.util.List;
+
 public interface Printable {
 
-    void print(Weapon weapon);
-
+    void print(List<Weapon> weapons);
 }

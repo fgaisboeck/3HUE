@@ -1,14 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package pkg3hue;
+package pgk3hue_bsp3;
 
-/**
- *
- * @author Torsten Welsch
- */
+import java.util.Objects;
+
 public class Weapon {
 
     private final String name;
