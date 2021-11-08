@@ -1,6 +1,8 @@
 package pgk3hue_bsp3;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,6 +23,18 @@ public class Streams {
             }
             random[i] = var;
         }
+        
+        String[] randomS = new String[10];
+     
+        for (int i = 0; i < randomS.length; i++) {
+            String tmp = "";
+            int rnd = (int)Math.random()*ZEICHEN.length;
+            for (int j = 0; j < 10; j++) {
+                tmp = tmp+ZEICHEN[rnd];
+            }
+            randomS[i]=tmp;
+        }
+        
     }
 
     public double average(int[] numbers) {
@@ -28,12 +42,11 @@ public class Streams {
     }
 
     public List<String> upperCase(String[] strings) {
-
-        return null;
+        return Arrays.stream(strings).map(string->string.toUpperCase()).collect(Collectors.toList());
     }
 
     public Weapon findWeaponWithLowestDamage(List<Weapon> weapons) {
-        return null;
+       return weapons.stream().min(Comparator.comparingInt(w -> w.getDamage())).orElse(null);
     }
 
     public Weapon findWeaponWithHighestStrength(List<Weapon> weapons) {
@@ -41,23 +54,31 @@ public class Streams {
     }
 
     public List<Weapon> collectMissileWeapons(List<Weapon> weapons) {
-        return null;
+       return weapons.stream().filter((t) -> t.getDamageType()==DamageType.MISSILE).collect(Collectors.toList());
+     
     }
 
     public Weapon findWeaponWithLongestName(List<Weapon> weapons) {
-        return null;
+        return weapons.stream().max(Comparator.comparingInt(w->w.getName().length())).orElse(null);
     }
 
     public List<String> toNameList(List<Weapon> weapons) {
-        return null;
+        return weapons.stream().map(Weapon::getName).collect(Collectors.toList());
     }
 
     public int[] toSpeedArray(List<Weapon> weapons) {
-        return null;
+        List<Integer> speeds = weapons.stream().map(Weapon::getSpeed).collect(Collectors.toList());
+        int[] intSpeeds = new int[speeds.size()];
+        for (int i = 0; i < speeds.size(); i++) {
+            Integer get = speeds.get(i);
+            intSpeeds[i]=get;
+        }
+        return intSpeeds;
     }
 
     public int sumUpValues(List<Weapon> weapons) {
-        return 2;
+        int sum = weapons.stream().mapToInt(Weapon::getValue).sum();
+        return sum;
     }
 
     public long sumUpHashCodes(List<Weapon> weapons) {
