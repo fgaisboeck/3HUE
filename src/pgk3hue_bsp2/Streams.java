@@ -1,4 +1,4 @@
-package pgk3hue_bsp3;
+package pgk3hue_bsp2;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,18 +23,18 @@ public class Streams {
             }
             random[i] = var;
         }
-        
+
         String[] randomS = new String[10];
-     
+
         for (int i = 0; i < randomS.length; i++) {
             String tmp = "";
-            int rnd = (int)Math.random()*ZEICHEN.length;
+            int rnd = (int) Math.random() * ZEICHEN.length;
             for (int j = 0; j < 10; j++) {
-                tmp = tmp+ZEICHEN[rnd];
+                tmp = tmp + ZEICHEN[rnd];
             }
-            randomS[i]=tmp;
+            randomS[i] = tmp;
         }
-        
+
     }
 
     public double average(int[] numbers) {
@@ -42,24 +42,24 @@ public class Streams {
     }
 
     public List<String> upperCase(String[] strings) {
-        return Arrays.stream(strings).map(string->string.toUpperCase()).collect(Collectors.toList());
+        return Arrays.stream(strings).map(string -> string.toUpperCase()).collect(Collectors.toList());
     }
 
     public Weapon findWeaponWithLowestDamage(List<Weapon> weapons) {
-       return weapons.stream().min(Comparator.comparingInt(w -> w.getDamage())).orElse(null);
+        return weapons.stream().min(Comparator.comparingInt(w -> w.getDamage())).orElse(null);
     }
 
     public Weapon findWeaponWithHighestStrength(List<Weapon> weapons) {
-        return null;
+        return weapons.stream().max(Comparator.comparingInt(w -> w.getMinStrength())).orElse(null);
     }
 
     public List<Weapon> collectMissileWeapons(List<Weapon> weapons) {
-       return weapons.stream().filter((t) -> t.getDamageType()==DamageType.MISSILE).collect(Collectors.toList());
-     
+        return weapons.stream().filter((t) -> t.getDamageType() == DamageType.MISSILE).collect(Collectors.toList());
+
     }
 
     public Weapon findWeaponWithLongestName(List<Weapon> weapons) {
-        return weapons.stream().max(Comparator.comparingInt(w->w.getName().length())).orElse(null);
+        return weapons.stream().max(Comparator.comparingInt(w -> w.getName().length())).orElse(null);
     }
 
     public List<String> toNameList(List<Weapon> weapons) {
@@ -71,7 +71,7 @@ public class Streams {
         int[] intSpeeds = new int[speeds.size()];
         for (int i = 0; i < speeds.size(); i++) {
             Integer get = speeds.get(i);
-            intSpeeds[i]=get;
+            intSpeeds[i] = get;
         }
         return intSpeeds;
     }
@@ -82,13 +82,18 @@ public class Streams {
     }
 
     public long sumUpHashCodes(List<Weapon> weapons) {
-        return 2;
+        long sum = weapons.stream().mapToInt(Weapon::hashCode).sum();
+        return sum;
     }
 
     public List<Weapon> removeDuplicates(List<Weapon> weapons) {
-        return null;
+        return weapons.stream().distinct().collect(Collectors.toList());
     }
 
     public void increaseValuesByTenPercent(List<Weapon> weapons) {
+        weapons.stream().forEach(w
+                -> {
+            w.setValue((int) (w.getValue() * 1.1));
+        });
     }
 }

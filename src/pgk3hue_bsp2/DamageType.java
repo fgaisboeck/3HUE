@@ -1,4 +1,4 @@
-package pgk3hue_bsp3;
+package pgk3hue_bsp2;
 
 public enum DamageType {
     SLASHING, PIERCING, BLUNT, MISSILE, NONE

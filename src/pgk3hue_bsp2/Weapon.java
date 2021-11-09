@@ -1,14 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package pkg3hue;
+package pgk3hue_bsp2;
 
-/**
- *
- * @author Torsten Welsch
- */
+import java.util.Objects;
+
 public class Weapon {
 
     private final String name;
@@ -51,6 +44,55 @@ public class Weapon {
 
     public int getMinStrength() {
         return minStrength;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(this.name);
+        hash = 79 * hash + Objects.hashCode(this.combatType);
+        hash = 79 * hash + Objects.hashCode(this.damageType);
+        hash = 79 * hash + this.damage;
+        hash = 79 * hash + this.speed;
+        hash = 79 * hash + this.minStrength;
+        hash = 79 * hash + this.value;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Weapon other = (Weapon) obj;
+        if (this.damage != other.damage) {
+            return false;
+        }
+        if (this.speed != other.speed) {
+            return false;
+        }
+        if (this.minStrength != other.minStrength) {
+            return false;
+        }
+        if (this.value != other.value) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (this.combatType != other.combatType) {
+            return false;
+        }
+        if (this.damageType != other.damageType) {
+            return false;
+        }
+        return true;
     }
 
     public int getValue() {

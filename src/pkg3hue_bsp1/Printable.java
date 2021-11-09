@@ -1,4 +1,4 @@
-package pkg3hue;
+package pkg3hue_bsp1;
 
 import java.util.List;
 

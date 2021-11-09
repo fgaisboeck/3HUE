@@ -1,4 +1,4 @@
-package pkg3hue;
+package pkg3hue_bsp1;
 
 import java.io.File;
 import java.io.IOException;
@@ -77,7 +77,6 @@ public class Main {
                 System.out.println(weapons.get(i).toString());
             }
         };
-        print.print(list);
 
         Printable printTabelle = (weapons) -> {
             int maxLength = 7;
@@ -104,7 +103,7 @@ public class Main {
                 while (maxLength != damage.length()) {
                     damage += " ";
                 }
-                System.out.println("------------------------------------------------------------------------");
+                System.out.println("-----------------+-----------------+-----------------+-----------------+");
                 System.out.print(name + "|");
                 System.out.print(combatype + "|");
                 System.out.print(damagetype + "|");

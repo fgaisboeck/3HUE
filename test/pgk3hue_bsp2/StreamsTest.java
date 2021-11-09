@@ -1,5 +1,9 @@
-package pgk3hue_bsp3;
+package pgk3hue_bsp2;
 
+import pgk3hue_bsp2.DamageType;
+import pgk3hue_bsp2.Streams;
+import pgk3hue_bsp2.CombatType;
+import pgk3hue_bsp2.Weapon;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
