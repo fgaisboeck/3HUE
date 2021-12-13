@@ -13,12 +13,8 @@ public class Main {
     public static void main(String[] args) throws IOException {
         List<Weapon> list = new LinkedList<>();
         // anonymous class for interface Comparator
-        list.sort(new Comparator<Weapon>() {
-            @Override
-            public int compare(Weapon o1, Weapon o2) {
-                return Integer.compare(o1.getDamage(), o2.getDamage());
-            }
-        });
+  
+        Comparator<Weapon> sort = Comparator.comparing(Weapon::getName).thenComparing(Weapon::getCombatType).thenComparing(Weapon::getDamageType);
 
         // lambda for interface Comparator
         list.clear();
@@ -38,10 +34,8 @@ public class Main {
         ))
                 .collect(Collectors.toList());
 
-        list.sort((w1, w2) -> Integer.compare(w1.getDamage(), w2.getDamage()));
-        list.sort((w1, w2) -> w1.getDamageType().compareTo(w2.getDamageType()));
-        list.sort((w1, w2) -> w1.getCombatType().compareTo(w2.getCombatType()));
-        list.sort((w1, w2) -> w1.getName().compareTo(w2.getName()));
+        
+        list.sort(sort);
 
         // lambda for interface Runnable
 //        Thread t = new Thread(() -> System.out.println("ID = " + Thread.currentThread().getId()));
