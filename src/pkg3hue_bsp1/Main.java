@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         List<Weapon> list = new LinkedList<>();
         // anonymous class for interface Comparator
-  
+
         Comparator<Weapon> sort = Comparator.comparing(Weapon::getName).thenComparing(Weapon::getCombatType).thenComparing(Weapon::getDamageType);
 
         // lambda for interface Comparator
@@ -34,7 +34,6 @@ public class Main {
         ))
                 .collect(Collectors.toList());
 
-        
         list.sort(sort);
 
         // lambda for interface Runnable

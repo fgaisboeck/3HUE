@@ -36,9 +36,8 @@ public class Streams {
         }
 
     }
-    
-    //Optional -> vorteilhaft, weil Optional hat Wert oder ist empty, empty!=null -> keine NullPointerException
 
+    //Optional -> vorteilhaft, weil Optional hat Wert oder ist empty, empty!=null -> keine NullPointerException
     public double average(int[] numbers) {
         return Arrays.stream(numbers).average().orElseThrow();
     }
